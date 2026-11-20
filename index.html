@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>myntra | Men's Fashion</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="logo" onclick="goHome()">
+        <div class="logo-mark">
+            <span>M</span>
+        </div>
+        <span class="logo-text">myntra</span>
+    </div>
+
+    <nav class="navigation">
+        <button onclick="showCategory('ALL')">MEN</button>
+        <button onclick="showCategory('T-Shirts')">T-SHIRTS</button>
+        <button onclick="showCategory('Shirts')">SHIRTS</button>
+        <button onclick="showCategory('Jeans')">JEANS</button>
+        <button onclick="showCategory('Sneakers')">SNEAKERS</button>
+    </nav>
+
+    <div class="search">
+        <span>⌕</span>
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="Search for products, brands and more"
+            oninput="applyFilters()"
+        >
+    </div>
+
+    <div class="header-actions">
+
+        <button onclick="openAccount()" class="head-btn">
+            <span>♙</span>
+            <small id="profileLabel">Profile</small>
+        </button>
+
+        <button onclick="openWishlist()" class="head-btn">
+            <span>♡</span>
+            <small>Wishlist</small>
+            <b id="wishlistCount">0</b>
+        </button>
+
+        <button onclick="openBag()" class="head-btn">
+            <span>🛍</span>
+            <small>Bag</small>
+            <b id="bagCount">0</b>
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            MEN'S PREMIUM COLLECTION · 2026
+        </div>
+
+        <h1>
+            Style that<br>
+            <span>speaks for you.</span>
+        </h1>
+
+        <p>
+            Discover premium men's fashion with refined silhouettes,
+            modern essentials and effortless everyday style.
+        </p>
+
+        <button class="hero-btn" onclick="scrollToProducts()">
+            EXPLORE COLLECTION
+            <span>→</span>
+        </button>
+
+        <div class="hero-stats">
+            <div>
+                <strong>10+</strong>
+                <span>Curated Styles</span>
+            </div>
+
+            <div>
+                <strong>100%</strong>
+                <span>Authentic</span>
+            </div>
+
+            <div>
+                <strong>7 DAY</strong>
+                <span>Easy Returns</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="hero-visual">
+
+        <div class="hero-glow"></div>
+
+        <div class="fashion-frame">
+
+            <img
+                src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&w=900&q=90"
+                alt="Men's fashion"
+            >
+
+            <div class="frame-label">
+                <span>NEW ARRIVAL</span>
+                <strong>THE MODERN MAN</strong>
+            </div>
+
+        </div>
+
+        <div class="floating-tag">
+            <span>UP TO</span>
+            <strong>50% OFF</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SERVICE STRIP ================= -->
+
+<section class="service-strip">
+
+    <div class="service">
+        <span>✦</span>
+        <div>
+            <strong>Premium Selection</strong>
+            <small>Curated men's styles</small>
+        </div>
+    </div>
+
+    <div class="service">
+        <span>🚚</span>
+        <div>
+            <strong>Free Delivery</strong>
+            <small>On orders above ₹999</small>
+        </div>
+    </div>
+
+    <div class="service">
+        <span>↩</span>
+        <div>
+            <strong>Easy Returns</strong>
+            <small>7 day return policy</small>
+        </div>
+    </div>
+
+    <div class="service">
+        <span>🔒</span>
+        <div>
+            <strong>Secure Checkout</strong>
+            <small>100% protected payment</small>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- ================= SHOP ================= -->
+
+<section class="shop-section" id="products">
+
+    <div class="shop-heading">
+
+        <div>
+            <div class="section-eyebrow">CURATED FOR YOU</div>
+            <h2>Men's Fashion</h2>
+            <p id="resultCount">10 products</p>
+        </div>
+
+        <select id="sortSelect" onchange="applyFilters()">
+            <option value="recommended">Recommended</option>
+            <option value="new">What's New</option>
+            <option value="popular">Popularity</option>
+            <option value="discount">Better Discount</option>
+            <option value="high">Price: High to Low</option>
+            <option value="low">Price: Low to High</option>
+            <option value="rating">Customer Rating</option>
+        </select>
+
+    </div>
+
+
+    <div class="shop-layout">
+
+        <!-- FILTERS -->
+
+        <aside class="filters">
+
+            <div class="filter-title">
+                <strong>FILTERS</strong>
+                <button onclick="clearFilters()">CLEAR ALL</button>
+            </div>
+
+
+            <div class="filter-group">
+
+                <h4>Categories</h4>
+
+                <label>
+                    <input type="checkbox" value="T-Shirts" class="category-check">
+                    T-Shirts
+                </label>
+
+                <label>
+                    <input type="checkbox" value="Shirts" class="category-check">
+                    Shirts
+                </label>
+
+                <label>
+                    <input type="checkbox" value="Jeans" class="category-check">
+                    Jeans
+                </label>
+
+                <label>
+                    <input type="checkbox" value="Sneakers" class="category-check">
+                    Sneakers
+                </label>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <h4>Brand</h4>
+
+                <label>
+                    <input type="checkbox" value="Roadster" class="brand-check">
+                    Roadster
+                </label>
+
+                <label>
+                    <input type="checkbox" value="H&M" class="brand-check">
+                    H&M
+                </label>
+
+                <label>
+                    <input type="checkbox" value="HRX" class="brand-check">
+                    HRX
+                </label>
+
+                <label>
+                    <input type="checkbox" value="Puma" class="brand-check">
+                    Puma
+                </label>
+
+                <label>
+                    <input type="checkbox" value="Nike" class="brand-check">
+                    Nike
+                </label>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <h4>Price</h4>
+
+                <label>
+                    <input type="radio" name="price" value="under1000">
+                    Under ₹1,000
+                </label>
+
+                <label>
+                    <input type="radio" name="price" value="1000to2000">
+                    ₹1,000 - ₹2,000
+                </label>
+
+                <label>
+                    <input type="radio" name="price" value="above2000">
+                    Above ₹2,000
+                </label>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <h4>Discount</h4>
+
+                <label>
+                    <input type="checkbox" value="10" class="discount-check">
+                    10% and above
+                </label>
+
+                <label>
+                    <input type="checkbox" value="30" class="discount-check">
+                    30% and above
+                </label>
+
+                <label>
+                    <input type="checkbox" value="40" class="discount-check">
+                    40% and above
+                </label>
+
+            </div>
+
+        </aside>
+
+
+        <!-- PRODUCTS -->
+
+        <main>
+
+            <div class="active-filters" id="activeFilters"></div>
+
+            <div class="product-grid" id="productGrid"></div>
+
+        </main>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CUSTOMER CARE ================= -->
+
+<section class="care-section">
+
+    <div>
+
+        <div class="section-eyebrow">
+            WE'RE HERE FOR YOU
+        </div>
+
+        <h2>Need a little help?</h2>
+
+        <p>
+            Our customer care team can help with orders, returns,
+            payments, delivery and anything else you need.
+        </p>
+
+    </div>
+
+    <button onclick="openCustomerCare()">
+        CUSTOMER CARE →
+    </button>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <div class="logo">
+                <div class="logo-mark">
+                    <span>M</span>
+                </div>
+
+                <span class="logo-text">myntra</span>
+            </div>
+
+            <p>
+                Premium fashion for the modern man.
+            </p>
+
+        </div>
+
+
+        <div>
+            <h4>SHOP</h4>
+            <p onclick="showCategory('T-Shirts')">T-Shirts</p>
+            <p onclick="showCategory('Shirts')">Shirts</p>
+            <p onclick="showCategory('Jeans')">Jeans</p>
+            <p onclick="showCategory('Sneakers')">Sneakers</p>
+        </div>
+
+
+        <div>
+            <h4>ACCOUNT</h4>
+            <p onclick="openAccount()">Profile</p>
+            <p onclick="openWishlist()">Wishlist</p>
+            <p onclick="openBag()">Shopping Bag</p>
+            <p onclick="openOrders()">My Orders</p>
+        </div>
+
+
+        <div>
+            <h4>HELP</h4>
+            <p onclick="openCustomerCare()">Customer Care</p>
+            <p onclick="openCustomerCare()">Returns</p>
+            <p onclick="openCustomerCare()">Shipping</p>
+            <p onclick="openCustomerCare()">Payments</p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <span>© 2026 myntra. All rights reserved.</span>
+        <span>Premium Men's Fashion</span>
+    </div>
+
+</footer>
+
+
+<!-- ================= MODAL ================= -->
+
+<div class="modal-overlay" id="modalOverlay">
+
+    <div class="modal" id="modal">
+
+        <button class="modal-close" onclick="closeModal()">×</button>
+
+        <div id="modalContent"></div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
